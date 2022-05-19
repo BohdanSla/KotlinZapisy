@@ -2,6 +2,8 @@ import java.util.*
 
 private val s1 = "Délka je $"
 
+private val s2 = "pole je na indexu"
+
 // Hello World Program
 fun main() {
     println("Hello World");
@@ -140,7 +142,7 @@ fun main() {
      */
 
     // podmínky
-    // narozdíl od javy, v kotlinu if vrací hodnotu
+    // narozdíl od javy, v kotlinu if vrací hodnotu, musím tam ale použít i else část
     val returnHodnota = if (i > 2) {
         "$i je větší než 2"
         vetsi = 50
@@ -155,18 +157,89 @@ fun main() {
     val num2 = 20
     val num3 = 30
     val z = if (num1 > num2) {
-        val t = if (num1 > num3) {
-            num1
+        var t = if(num1 > num3) {
+            4
         } else {
-            num3
+            89
         }
+        println(t)
+        8 // tady je poslední řádek
     } else if (num2 > num3) {
-        "else if" + num2
+       7
     } else {
-        "else"+num3
+        3
     }
-    println(z)
+    println("$z")
+    //samozřejmě nemusím použít vracející hodnotu
+    if(num1 > num2) {
+        println(num1)
+    } else {
+        println(num2)
+    }
+    //!!!!! nešlo by
+    //var s = if(num1> num3) {
+      //  println(num1)
+    //} else {
+      //  println(num3)
+    //}
 
-}
+    //switch
+    // V kotlinu je when místo switch
+    // Místo default je tu else
+    // na konec každé možnosti se nedává break
+
+    var num = 2
+    var cau = when(num) {
+        1 -> 8
+        2 -> {
+            "a"
+            "i" // jako u podmínek, i tady se k proměnné přiřadí hodnota z posledního řádku casu
+        }
+        3 -> "ahoj3"
+        4 -> "čau"
+        else -> "Konec"
+        }
+    println(cau)
+    when(num) {
+        1, 2, 3, 4 -> println(1..4); //v kotlinu jde napsat, že několik možností bude mít stejné vykonání programu
+        in 5..10 -> println("rozmezí mezi 5 a 10"); // jde použít i range
+        else -> println("Nic")
+        }
+    //for loop
+    // kotlin for loop je ekvivalent foreach loopu v javě
+    for (el in arr)
+        println(el)//nemusí se psát {}, když tam je jenom řádek v těle forloopu
+
+    //for loop na indexování
+    for (el in pole.indices) {
+        println("na indexu v poli: pole[$el] je " + pole[el])
+        }
+    //Iterace for loopu pomocí range operátoru
+    print("1..5: ")
+    for (i in 1..5)
+        print("$i, ")
+    println()
+    print("5..1: ")
+    for (i in 5..1) //nic nevypíše
+        print("$i, ")
+    println()
+    print("5 downTo 1: ")
+    for (i in 5 downTo 1) //musí se napsat downTo, aby výpis byl proveden sestupně
+        print("$i, ")
+    println()
+    print("1..11 step 2: ")
+    for (i in 1..11 step 2) // i se zvětší vždy o 2
+        print("$i, ")
+    println()
+    print("16 downTo 1 step 3: ")
+    for (i in 16 downTo 1 step 3) //  i se zmenší vždy o 3
+        print("$i, ")
+    }
+
+
+
+
+
+
 
 
